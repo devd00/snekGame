@@ -60,4 +60,57 @@ let currentHeadPostion = TOTAL_PIXEL_COUNT/2
 //set initial length
 let snakeLength = 200
 
-//start moving snek
+//start moving snek and wrap around the other side of the screen if needed
+//FIND the math at isHeadAtLeft, how does the snake goes to the other side of the board
+const moveSnake = () => {
+    switch(snakeCurrentDirection){
+        case LEFT_DIR:
+            --currentHeadPostion
+            const isHeadAtLeft = currentHeadPostion % LINE_PIXEL_COUNT == LINE_PIXEL_COUNT-1 || currentFoodPosition < 0
+            if(isHeadAtLeft){
+                currentHeadPostion = currentHeadPostion + LINE_PIXEL_COUNT
+            }
+        break
+    
+        case RIGHT_DIR:
+            ++currentHeadPostion
+            const isHeadatRight = currentHeadPostion %  LINE_PIXEL_COUNT == 0
+            if(isHeadatRight){
+                currentHeadPostion = currentHeadPostion - LINE_PIXEL_COUNT
+            }
+        break 
+
+        case UP_DIR:
+            currentHeadPostion = currentHeadPostion - LINE_PIXEL_COUNT
+            const isHeadAtTop = currentHeadPostion < 0
+            if(isHeadAtTop){
+                currentHeadPostion = currentHeadPostion + TOTAL_PIXEL_COUNT //when head at top goes out of the screen,
+                //the variable becomes negative, to get it back TOTAL_PIXEL_COUNT needs to be added to it
+            }
+            break   
+
+        case DOWN_DIR:
+            currentHeadPostion = currentHeadPostion + LINE_PIXEL_COUNT
+            const isHeadAtBottom = currentHeadPostion > TOTAL_PIXEL_COUNT -1 
+            if(isHeadAtBottom){
+                currentHeadPostion = currentHeadPostion - TOTAL_PIXEL_COUNT
+            }
+            break
+            default: //FIND out what this does
+            break
+        }
+        //accessed the corrct pixel within the HTML collection
+        let nextSnakeHeadPixel = gameBoardPixels[currentHeadPostion] //this puts the snake head in the HTML DOM
+        //check if snake head is about to intersect with its own body
+        if(nextSnakeHeadPixel.classList.contains('snekBodyPixel')){
+            clearInterval(moveSnakeInterval)
+            alert(`You have eaten ${totalFoodEaten} food and traveled ${totalDistanceTraveled} blocks.`)
+        window.location.reload() //this restarts the page
+        }
+        //assuming an empty pixel, add snake body styling
+        nextSnakeHeadPixel.classList.add('snekBodyPixel')
+
+}
+createGameBoardPixels()
+createFood()
+let moveSnakeInterval = setInterval(moveSnake, 100)
