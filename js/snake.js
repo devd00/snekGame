@@ -109,8 +109,40 @@ const moveSnake = () => {
         }
         //assuming an empty pixel, add snake body styling
         nextSnakeHeadPixel.classList.add('snekBodyPixel')
+        //remove snake styling to keep snake appropriate length
+        setTimeout(()=>{
+            nextSnakeHeadPixel.classList.remove('snekBodyPixel')
+        }, snakeLength) //FIND what setTimeout is doing here, and how, it removes styling
+        
+        //behaviour when snek encounters food
+        
+        if(currentHeadPostion == currentFoodPosition){
+            totalFoodEaten++
+            document.getElementById('pointsEarned').innerText = totalFoodEaten
+            snakeLength = snakeLength + 100
+            createFood()
+        }
+        //counter for total distance traveled
+        totalDistanceTraveled++
+        document.getElementById('blocksTraveled').innerText = totalDistanceTraveled
+    
+    }
 
-}
+    //call initial functions to create board and start game
 createGameBoardPixels()
 createFood()
+//set animation speed
 let moveSnakeInterval = setInterval(moveSnake, 100)
+
+addEventListener('keydown', e => changeDirection(e.keyCode))
+//add variables for onscreen buttons
+const leftbutton = document.getElementById('leftbutton')
+const rightbutton = document.getElementById('rightbutton')
+const upbutton = document.getElementById('uputton')
+const downbutton = document.getElementById('downbutton')
+
+//add listeners for on screen keys
+leftbutton.onclick = () => changeDirection(LEFT_DIR)
+rightbutton.onclick = () => changeDirection(RIGHT_DIR)
+upbutton.onclick = () => changeDirection(UP_DIR)
+downbutton.onclick = () => changeDirection(DOWN_DIR)
