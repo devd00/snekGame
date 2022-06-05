@@ -1,0 +1,50 @@
+body{
+    background-color: rgb(13, 153, 130);
+    text-align: center;
+    
+}
+#gameContainer{
+    width: 40vw;
+    height:40vw;
+    margin: 1vw auto;
+    background-color: rgb(43, 4, 4);
+    border: solid 10px rgb(68, 5, 5);
+    border-radius: 10px;
+    box-shadow: 0px 0px 16px 2px black;
+}
+.gameBoardPixel {
+    width: 1vw;
+    height:1vw;
+    border-radius: 8px;
+    float: left;
+    outline: 1px solid red;
+}
+.food{
+    background-color: rgb(9, 170, 9);
+    box-shadow: 0 0 8px rgb(8, 228, 8);
+}
+.snekBodyPixel{
+    background-color: rgb(104, 9, 104);
+    box-shadow: 0 0 5px  rgb(221, 10, 221);
+}
+#scoreContainer{
+    width: 40vw;
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+}
+.scoreBoard{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    border-radius: 5px;
+    border: solid 3px rgb(90, 90, 226);
+    color: white;
+    background-color: rgb(43, 4, 4);
+    display: inline-block;
+    padding: 5px;
+    width: 40%;
+    box-shadow: 0px 0px 16px 2px black;
+}
+#onScreenControllers{
+    display: none;
+}
