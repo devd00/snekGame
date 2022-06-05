@@ -25,6 +25,7 @@ body{
 }
 .snekBodyPixel{
     background-color: rgb(211, 14, 211);
+    margin: 2px rgb(75, 42, 5);
     box-shadow: 0 0 5px  rgb(252, 152, 252);
 }
 #scoreContainer{
@@ -47,4 +48,43 @@ body{
 }
 #onScreenControllers{
     display: none;
+}
+
+@media only screen and (max-width: 786px){
+    #gameContainer{
+        width: 80vw;
+        height: 80vw;
+    }
+    .gameBoardPixel{
+        width: 2vw;
+        height: 2vw;
+    }
+    #scoreContainer{
+        width: 80vw;
+    }
+    #onScreenControllers{
+        width: 80vw;
+        margin: 5vw auto;
+        display: flex;
+        justify-content: space-evenly;
+        align-items:  center;
+
+    }
+    #onScreenControllers > div {
+        display: flex;
+        flex-direction: column;
+    }
+    #onScreenControllers button {
+        background-color: transparent;
+        height: 25vw;
+        width: 25vw;
+        font-size: 8vw;
+        border: none;
+    }
+    #onScreenControllers button.focus{
+        outline: none;
+    }
+    #onScreenControllers button.active{
+        background-color : gray;
+    }
 }

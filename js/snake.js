@@ -136,13 +136,14 @@ let moveSnakeInterval = setInterval(moveSnake, 100)
 
 addEventListener('keydown', e => changeDirection(e.keyCode))
 //add variables for onscreen buttons
-const leftbutton = document.getElementById('leftbutton')
-const rightbutton = document.getElementById('rightbutton')
-const upbutton = document.getElementById('uputton')
-const downbutton = document.getElementById('downbutton')
+const leftbutton = document.getElementById('leftButton')
+const rightbutton = document.getElementById('rightButton')
+const upbutton = document.getElementById('upButton')
+const downbutton = document.getElementById('downButton')
 
 //add listeners for on screen keys
 leftbutton.onclick = () => changeDirection(LEFT_DIR)
 rightbutton.onclick = () => changeDirection(RIGHT_DIR)
 upbutton.onclick = () => changeDirection(UP_DIR)
 downbutton.onclick = () => changeDirection(DOWN_DIR)
+
